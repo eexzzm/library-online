@@ -28,11 +28,18 @@ if (!isset($_SESSION['user_id']) &&
 		      action="php/auth.php">
 
 		  <h1 class="text-center display-4 pb-5">LOGIN</h1>
+
 		  <?php if (isset($_GET['error'])) { ?>
           <div class="alert alert-danger" role="alert">
 			  <?=htmlspecialchars($_GET['error']); ?>
 		  </div>
 		  <?php } ?>
+
+		  <?php if (isset($_GET['success'])) { ?>
+          <div class="alert alert-success" role="alert">
+			  <?=htmlspecialchars($_GET['success']); ?>
+		  </div>
+		<?php } ?>
 
 		  <div class="mb-3">
 		    <label for="exampleInputEmail1" 
