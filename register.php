@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) &&
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>LOGIN</title>
+	<title>REGISTER</title>
 
     <!-- bootstrap 5 CDN-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -25,9 +25,9 @@ if (!isset($_SESSION['user_id']) &&
 		<form class="p-5 rounded shadow"
 		      style="max-width: 60rem; width: 100%"
 		      method="POST"
-		      action="php/auth.php">
+		      action="php/add-admin.php">
 
-		  <h1 class="text-center display-4 pb-5">LOGIN</h1>
+		  <h1 class="text-center display-4 pb-5">REGISTER</h1>
 		  <?php if (isset($_GET['error'])) { ?>
           <div class="alert alert-danger" role="alert">
 			  <?=htmlspecialchars($_GET['error']); ?>
@@ -35,14 +35,22 @@ if (!isset($_SESSION['user_id']) &&
 		  <?php } ?>
 
 		  <div class="mb-3">
-		    <label for="exampleInputEmail1" 
-		           class="form-label">Email address</label>
-		    <input type="email" 
+		    <label for="full_name" 
+		           class="form-label">Name</label>
+		    <input type="full_name" 
 		           class="form-control" 
-		           name="email" 
-		           id="exampleInputEmail1" 
-		           aria-describedby="emailHelp">
+		           name="full_name" 
+		           id="exampleInputName1">
 		  </div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" 
+		               class="form-label">Email address</label>
+		        <input type="email" 
+		               class="form-control" 
+		               name="email" 
+		               id="exampleInputEmail1">
+            </div>
 
 		  <div class="mb-3">
 		    <label for="exampleInputPassword1" 
@@ -55,12 +63,12 @@ if (!isset($_SESSION['user_id']) &&
 		  <div class="d-flex justify-content-between">
 			  <button type="submit" 
 					  class="btn btn-primary">
-					  Login</button>
-					<div>
-						<a href="register.php" class="text-decoration-none text-success">Create new account</a>
-						|
-						<a href="index.php" class="text-decoration-none">Store</a>
-					</div>
+					  Register</button>
+                      <div>
+                          <a href="login.php" class="text-decoration-none text-success">Already have an account</a>
+                          |
+                          <a href="index.php" class="text-decoration-none">Store</a>
+                      </div>
 		  </div>
 		</form>
 	</div>
