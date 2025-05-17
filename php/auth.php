@@ -34,7 +34,7 @@ if ($user = tryLogin($conn, 'users', $email, $password)) {
     $_SESSION['user_id']    = $user['id'];
     $_SESSION['user_email'] = $user['email'];
     $_SESSION['role']       = 'user';
-    header("Location: ../store.php");
+    header("Location: ../index.php");
     exit;
 }	
 
