@@ -67,7 +67,7 @@ $categories = get_all_categories($conn);
 		             href="#">About</a>
 		        </li>
 		        <li class="nav-item">
-		          <?php if (isset($_SESSION['user_id'])) {?>
+		          <?php if ($_SESSION['role'] == 'admin') {?>
 		          	<a class="nav-link" 
 		             href="admin.php">Admin</a>
 		          <?php }else{ ?>
