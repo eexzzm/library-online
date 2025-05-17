@@ -8,21 +8,18 @@ if (!isset($_POST['email'], $_POST['password'])) {
     
 # Database Connection File
 include "../db_conn.php";
-
 # Validation helper function
 include "func-validation.php";
 # Validation helper function
 include "func-auth.php";
 
-/** 
-   Get data from POST request 
-   and store them in var
-**/
 $email = trim($_POST['email']);
 $password = $_POST['password'];
+
 # simple form validation
 is_empty($email, "Email", "../login.php", "error", "");
 is_empty($password, "Password", "../login.php", "error", "");
+
 // 1. Try admin
 if ($user = tryLogin($conn, 'admin', $email, $password)) {
     $_SESSION['user_id']    = $user['id'];
@@ -31,6 +28,7 @@ if ($user = tryLogin($conn, 'admin', $email, $password)) {
     header("Location: ../admin.php");
     exit;
 }
+
 // 2. Try regular user
 if ($user = tryLogin($conn, 'users', $email, $password)) {
     $_SESSION['user_id']    = $user['id'];
