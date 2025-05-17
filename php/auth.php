@@ -15,7 +15,7 @@ if (isset($_POST['email']) &&
 	   and store them in var
 	**/
 
-	$email = $_POST['email'];
+	$email = trim($_POST['email']);
 	$password = $_POST['password'];
 
 	# simple form validation
