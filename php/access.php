@@ -6,11 +6,11 @@
  */
 function requireRole(array $allowedRoles) {
     if (!isset($_SESSION['role'])) {
-        header("Location: /login.php");
+        header("Location: login.php");
         exit;
     }
     if (!in_array($_SESSION['role'], $allowedRoles)) {
-        header("Location: /access_denied.php");
+        header("Location: access_denied.php");
         exit;
     }
 }
