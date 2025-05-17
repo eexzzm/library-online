@@ -1,5 +1,7 @@
 <?php 
 session_start();
+require_once "php/access.php";
+requireRole(['admin','user']);
 
 # Database Connection File
 include "db_conn.php";

@@ -1,5 +1,7 @@
 <?php 
 session_start();
+require_once "php/access.php";
+requireRole(['admin','user']);
 
 # If search key is not set or empty
 if (!isset($_GET['key']) || empty($_GET['key'])) {

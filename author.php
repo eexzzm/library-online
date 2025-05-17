@@ -1,5 +1,7 @@
 <?php 
 session_start();
+require_once "php/access.php";
+requireRole(['admin','user']);
 
 # If not author ID is set
 if (!isset($_GET['id'])) {
