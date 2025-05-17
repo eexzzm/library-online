@@ -6,29 +6,24 @@ if (!isset($_POST['email'], $_POST['password'])) {
     exit;
 }
     
-    # Database Connection File
-	include "../db_conn.php";
-    
-    # Validation helper function
-	include "func-validation.php";
+# Database Connection File
+include "../db_conn.php";
 
-    # Validation helper function
-	include "func-auth.php";
-	
-	/** 
-	   Get data from POST request 
-	   and store them in var
-	**/
+# Validation helper function
+include "func-validation.php";
+# Validation helper function
+include "func-auth.php";
 
-	$email = trim($_POST['email']);
-	$password = $_POST['password'];
-
-	# simple form validation
-
-	is_empty($email, "Email", "../login.php", "error", "");
-	is_empty($password, "Password", "../login.php", "error", "");
-
-	// 1. Try admin
+/** 
+   Get data from POST request 
+   and store them in var
+**/
+$email = trim($_POST['email']);
+$password = $_POST['password'];
+# simple form validation
+is_empty($email, "Email", "../login.php", "error", "");
+is_empty($password, "Password", "../login.php", "error", "");
+// 1. Try admin
 if ($user = tryLogin($conn, 'admin', $email, $password)) {
     $_SESSION['user_id']    = $user['id'];
     $_SESSION['user_email'] = $user['email'];
