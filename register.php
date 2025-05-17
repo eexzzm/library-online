@@ -1,7 +1,7 @@
 <?php  
 session_start();
 
-# If the admin is logged in
+# If the user is logged in
 if (!isset($_SESSION['user_id']) &&
     !isset($_SESSION['user_email'])) {
 ?>
@@ -25,7 +25,7 @@ if (!isset($_SESSION['user_id']) &&
 		<form class="p-5 rounded shadow"
 		      style="max-width: 60rem; width: 100%"
 		      method="POST"
-		      action="php/add-admin.php">
+		      action="php/add-user.php">
 
 		  <h1 class="text-center display-4 pb-5">REGISTER</h1>
 		  <?php if (isset($_GET['error'])) { ?>
@@ -76,6 +76,6 @@ if (!isset($_SESSION['user_id']) &&
 </html>
 
 <?php }else{
-  header("Location: admin.php");
+  header("Location: user.php");
   exit;
 } ?>

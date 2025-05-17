@@ -28,7 +28,7 @@ if (isset($_POST['full_name'], $_POST['email'], $_POST['password'])) {
     // Hash the password using bcrypt
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO admin (full_name, email, password) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     try {
