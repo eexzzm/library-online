@@ -1,5 +1,7 @@
 <?php  
 session_start();
+require_once "php/access.php";
+requireAdmin();
 
 # If the admin is logged in
 if (isset($_SESSION['user_id']) &&
