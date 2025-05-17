@@ -75,6 +75,6 @@ if (!isset($_SESSION['user_id']) &&
 </html>
 
 <?php }else{
-  header("Location: admin.php");
+  header("Location: index.php");
   exit;
 } ?>
