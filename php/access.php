@@ -10,7 +10,7 @@ function requireRole(array $allowedRoles) {
         exit;
     }
     if (!in_array($_SESSION['role'], $allowedRoles)) {
-        header("Location: access_denied.php");
+        header("Location: index.php");
         exit;
     }
 }
