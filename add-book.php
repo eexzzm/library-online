@@ -66,7 +66,7 @@ if (isset($_SESSION['user_id']) &&
 		             href="index.php">Store</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link active" 
+		          <a class="nav-link" 
 		             href="add-book.php">Add Book</a>
 		        </li>
 		        <li class="nav-item">
@@ -77,11 +77,22 @@ if (isset($_SESSION['user_id']) &&
 		          <a class="nav-link" 
 		             href="add-author.php">Add Author</a>
 		        </li>
-		        <li class="nav-item">
-		          <a class="nav-link" 
-		             href="logout.php">Logout</a>
-		        </li>
 		      </ul>
+
+			  <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      			  <?php if (isset($_SESSION['user_name'])) { ?>
+      			    <li class="nav-item dropdown">
+      			      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      			        <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+      			      </a>
+      			      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+      			        <li><a class="dropdown-item" href="edit-profile.php">Edit Profile</a></li>
+      			        <li><hr class="dropdown-divider"></li>
+      			        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+      			      </ul>
+      			    </li>
+      			  <?php } ?>
+      			</ul>
 		    </div>
 		  </div>
 		</nav>
