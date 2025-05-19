@@ -59,27 +59,34 @@ $categories = get_all_categories($conn);
 		             href="index.php">Store</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" 
-		             href="#">Contact</a>
-		        </li>
-		        <li class="nav-item">
-		          <a class="nav-link" 
-		             href="#">About</a>
-		        </li>
-		        <li class="nav-item">
 		          <?php if ($_SESSION['role'] == 'admin') {?>
 		          	<a class="nav-link" 
 		             href="admin.php">Admin</a>
 		          <?php }else{ ?>
-		          <a class="nav-link" 
-		             href="logout.php">Logout</a>
-		          <?php } ?>
-
-		        </li>
+		          <?php } ?>	
 		      </ul>
+
+			  <!-- Right-aligned user dropdown -->
+      			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      			  <?php if (isset($_SESSION['user_name'])) { ?>
+      			    <li class="nav-item dropdown">
+      			      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      			        <?php echo htmlspecialchars($_SESSION['user_name']); ?>
+      			      </a>
+      			      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+      			        <li><a class="dropdown-item" href="edit-profile.php">Edit Profile</a></li>
+      			        <li><hr class="dropdown-divider"></li>
+      			        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+      			      </ul>
+      			    </li>
+      			  <?php } ?>
+      			</ul>
+				
+    		  </ul>
 		    </div>
 		  </div>
-		</nav><br>
+		</nav>
+		<br>
 		Search result for <b><?=$key?></b>
 
 		<div class="d-flex pt-3">
