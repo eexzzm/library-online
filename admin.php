@@ -21,6 +21,10 @@ if (isset($_SESSION['user_id']) &&
     # Category helper function
 	include "php/func-category.php";
     $categories = get_all_categories($conn);
+    
+	# Category helper function
+	include "php/func-user.php";
+    $users = get_all_user($conn);
 
 ?>
 
@@ -290,6 +294,50 @@ if (isset($_SESSION['user_id']) &&
 			</tbody>
 		</table> 
 		<?php } ?>
+
+		<?php  if ($categories == 0) { ?>
+        	<div class="alert alert-warning 
+        	            text-center p-5" 
+        	     role="alert">
+        	     <img src="img/empty.png" 
+        	          width="100">
+        	     <br>
+			  There is no user in the database
+		    </div>
+        <?php }else {?>
+	    <!-- List of all users -->
+		<h4 class="mt-5">All Users</h4>
+		<table class="table table-bordered shadow">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>User Name</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php 
+				$j = 0;
+				foreach ($users as $user ) {
+				$j++;	
+				?>
+				<tr>
+					<td><?=$j?></td>
+					<td><?=$user['full_name']?></td>
+					<td>
+						<a href="edit-category.php?id=<?=$category['id']?>" 
+						   class="btn btn-warning">
+						   Edit</a>
+
+						<a href="php/delete-category.php?id=<?=$category['id']?>" 
+						   class="btn btn-danger">
+					       Delete</a>
+					</td>
+				</tr>
+			    <?php } ?>
+			</tbody>
+		</table>
+	    <?php } ?>
 	</div>
 </body>
 </html>
