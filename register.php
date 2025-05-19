@@ -49,7 +49,8 @@ if (!isset($_SESSION['user_id']) &&
 		        <input type="email" 
 		               class="form-control" 
 		               name="email" 
-		               id="exampleInputEmail1">
+		               id="exampleInputEmail1"
+					   aria-describedby="emailHelp">
             </div>
 
 		  <div class="mb-3">
