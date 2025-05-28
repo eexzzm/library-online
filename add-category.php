@@ -59,7 +59,7 @@ if (isset($_SESSION['user_id']) &&
       			        <?php echo htmlspecialchars($_SESSION['user_name']); ?>
       			      </a>
       			      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-      			        <li><a class="dropdown-item" href="edit-profile.php">Edit Profile</a></li>
+      			        <li><a class="dropdown-item" href="edit-current-user.php">Edit Profile</a></li>
       			        <li><hr class="dropdown-divider"></li>
       			        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
       			      </ul>

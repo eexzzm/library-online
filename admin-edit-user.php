@@ -6,6 +6,29 @@ requireAdmin();
 # If the admin is logged in
 if (isset($_SESSION['user_id']) &&
     isset($_SESSION['user_email'])) {
+    
+    # If author ID is not set
+	if (!isset($_GET['id'])) {
+		#Redirect to admin.php page
+        header("Location: admin.php");
+        exit;
+	}
+
+	$id = $_GET['id'];
+
+	# Database Connection File
+	include "db_conn.php";
+
+    # author helper function
+	include "php/func-user.php";
+    $user = get_user($conn, $id);
+    
+    # If the ID is invalid
+    if ($user == 0) {
+    	#Redirect to admin.php page
+        header("Location: admin.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +36,7 @@ if (isset($_SESSION['user_id']) &&
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Add Author</title>
+	<title>Edit Author</title>
 
     <!-- bootstrap 5 CDN-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -50,32 +73,21 @@ if (isset($_SESSION['user_id']) &&
 		          <a class="nav-link" 
 		             href="add-author.php">Add Author</a>
 		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" 
+		             href="logout.php">Logout</a>
+		        </li>
 		      </ul>
-
-			  <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-      			  <?php if (isset($_SESSION['user_name'])) { ?>
-      			    <li class="nav-item dropdown">
-      			      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      			        <?php echo htmlspecialchars($_SESSION['user_name']); ?>
-      			      </a>
-      			      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-      			        <li><a class="dropdown-item" href="edit-current-user.php">Edit Profile</a></li>
-      			        <li><hr class="dropdown-divider"></li>
-      			        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-      			      </ul>
-      			    </li>
-      			  <?php } ?>
-      			</ul>
 		    </div>
 		  </div>
 		</nav>
-     <form action="php/add-author.php"
+     <form action="php/edit-user.php"
            method="post" 
            class="shadow p-4 rounded mt-5"
            style="width: 90%; max-width: 50rem;">
 
      	<h1 class="text-center pb-5 display-4 fs-3">
-     		Add New Author
+     		Edit User
      	</h1>
      	<?php if (isset($_GET['error'])) { ?>
           <div class="alert alert-danger" role="alert">
@@ -89,16 +101,24 @@ if (isset($_SESSION['user_id']) &&
 		<?php } ?>
      	<div class="mb-3">
 		    <label class="form-label">
-		           	Author Name
+		           	Username
 		           </label>
+
+		     <input type="text" 
+		            value="<?=$user['id'] ?>" 
+		            hidden
+		            name="user_id">
+
+
 		    <input type="text" 
-		           class="form-control" 
-		           name="author_name">
+		           class="form-control"
+		           value="<?=$user['full_name'] ?>" 
+		           name="user_name">
 		</div>
 
 	    <button type="submit" 
 	            class="btn btn-primary">
-	            Add Author</button>
+	            Update</button>
      </form>
 	</div>
 </body>

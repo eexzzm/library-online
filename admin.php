@@ -79,7 +79,7 @@ if (isset($_SESSION['user_id']) &&
       			        <?php echo htmlspecialchars($_SESSION['user_name']); ?>
       			      </a>
       			      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-      			        <li><a class="dropdown-item" href="edit-profile.php">Edit Profile</a></li>
+      			        <li><a class="dropdown-item" href="edit-current-user.php">Edit Profile</a></li>
       			        <li><hr class="dropdown-divider"></li>
       			        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
       			      </ul>
@@ -325,11 +325,11 @@ if (isset($_SESSION['user_id']) &&
 					<td><?=$j?></td>
 					<td><?=$user['full_name']?></td>
 					<td>
-						<a href="edit-category.php?id=<?=$category['id']?>" 
+						<a href="admin-edit-user.php?id=<?=$user['id']?>" 
 						   class="btn btn-warning">
 						   Edit</a>
 
-						<a href="php/delete-category.php?id=<?=$category['id']?>" 
+						<a href="php/delete-user.php?id=<?=$user['id']?>" 
 						   class="btn btn-danger">
 					       Delete</a>
 					</td>

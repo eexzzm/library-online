@@ -46,7 +46,7 @@ $categories = get_all_categories($conn);
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		  <div class="container-fluid">
-		    <a class="navbar-brand" href="index.php">Online Book Store</a>
+		    <a class="navbar-brand" href="index.php">Online Library</a>
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		      <span class="navbar-toggler-icon"></span>
 		    </button>
@@ -74,7 +74,7 @@ $categories = get_all_categories($conn);
       			        <?php echo htmlspecialchars($_SESSION['user_name']); ?>
       			      </a>
       			      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-      			        <li><a class="dropdown-item" href="edit-profile.php">Edit Profile</a></li>
+      			        <li><a class="dropdown-item" href="edit-current-user.php">Edit Profile</a></li>
       			        <li><hr class="dropdown-divider"></li>
       			        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
       			      </ul>

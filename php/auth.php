@@ -20,7 +20,7 @@ $password = $_POST['password'];
 is_empty($email, "Email", "../login.php", "error", "");
 is_empty($password, "Password", "../login.php", "error", "");
 
-// 1. Try admin
+// Try admin
 if ($user = tryLogin($conn, 'admin', $email, $password)) {
     $_SESSION['user_id']    = $user['id'];
     $_SESSION['user_name']    = $user['full_name'];
@@ -30,7 +30,7 @@ if ($user = tryLogin($conn, 'admin', $email, $password)) {
     exit;
 }
 
-// 2. Try regular user
+// Try regular user
 if ($user = tryLogin($conn, 'users', $email, $password)) {
     $_SESSION['user_id']    = $user['id'];
     $_SESSION['user_name']    = $user['full_name'];
@@ -40,7 +40,7 @@ if ($user = tryLogin($conn, 'users', $email, $password)) {
     exit;
 }	
 
-// 3. Failed all checks
+// Failed all checks
 $em = "Incorrect email or password";
 header("Location: ../login.php?error=" . urlencode($em));
 exit;

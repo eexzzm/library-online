@@ -65,8 +65,6 @@ if (!isset($_SESSION['user_id']) &&
 					  Login</button>
 					<div>
 						<a href="register.php" class="text-decoration-none text-success">Create new account</a>
-						|
-						<a href="index.php" class="text-decoration-none">Store</a>
 					</div>
 		  </div>
 		</form>

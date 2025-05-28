@@ -36,7 +36,7 @@ $categories = get_all_categories($conn);
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		  <div class="container-fluid">
-		    <a class="navbar-brand" href="index.php">Online Book Store</a>
+		    <a class="navbar-brand" href="index.php">Online Library</a>
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		      <span class="navbar-toggler-icon"></span>
 		    </button>
@@ -64,7 +64,7 @@ $categories = get_all_categories($conn);
       			        <?php echo htmlspecialchars($_SESSION['user_name']); ?>
       			      </a>
       			      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-      			        <li><a class="dropdown-item" href="edit-profile.php">Edit Profile</a></li>
+      			        <li><a class="dropdown-item" href="edit-current-user.php">Edit Profile</a></li>
       			        <li><hr class="dropdown-divider"></li>
       			        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
       			      </ul>
@@ -110,7 +110,7 @@ $categories = get_all_categories($conn);
 			<?php }else{ ?>
 			<div class="pdf-list d-flex flex-wrap">
 				<?php foreach ($books as $book) { ?>
-				<div class="card m-1">
+				<div class="card m-1" style="max-width: 200px;" >
 					<img src="uploads/cover/<?=$book['cover']?>"
 					     class="card-img-top">
 					<div class="card-body">
@@ -141,11 +141,18 @@ $categories = get_all_categories($conn);
 							<br></b></i>
 						</p>
                        <a href="uploads/files/<?=$book['file']?>"
-                          class="btn btn-success">Open</a>
-
+                          class="btn btn-success">
+						<img src="img/eye-fill.svg"
+		               width="23" style="filter: invert(1);">
+						</a>
+						
+						  <i class="bi bi-download"></i>
                         <a href="uploads/files/<?=$book['file']?>"
                           class="btn btn-primary"
-                          download="<?=$book['title']?>">Download</a>
+                          download="<?=$book['title']?>">
+						<img src="img/download.svg"
+		               width="23" style="filter: invert(1);">
+					</a>
 					</div>
 				</div>
 				<?php } ?>
